@@ -1,0 +1,25 @@
+<h1>登録</h1>
+<% if @user.errors.any? %>
+  <div class="error_exception">
+    <ul>
+      <% @user.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @user, local: true) do |f| %>
+  <div>
+    <%= f.text_field :name, placeholder: "名前" %>
+  </div>
+  <div>
+    <%= f.email_field :email, placeholder: "メールアドレス" %>
+  </div>
+  <div>
+    <%= f.password_field :password, placeholder: "パスワード" %>
+  </div>
+  <div>
+    <%= f.password_field :password_confirmation, placeholder: "パスワード確認" %>
+  </div>
+  <%= f.submit "作成" %>
+<% end %>

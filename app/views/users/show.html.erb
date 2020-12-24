@@ -1,0 +1,13 @@
+<h1>詳細</h1>
+<p><%= @user.name %>のページ</p>
+<% if @user.image.url %>
+  <p>プロフィール画像:<%= image_tag @user.image.url %></p>
+<% else %>
+  <p>プロフィール画像は設定されていません。</p>
+<% end %>
+<div>
+  <p>メールアドレス:<%= @user.email %></p>
+</div>
+<div>
+  <%= link_to "編集", edit_user_path %>
+</div>
