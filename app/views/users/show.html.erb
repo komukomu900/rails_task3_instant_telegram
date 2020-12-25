@@ -1,9 +1,14 @@
 <h1>詳細</h1>
 <p><%= @user.name %>のページ</p>
 <div>
-  プロフィール画像:<%= image_tag @user.image.url if @user.image.present? %>
+  プロフィール画像:<%= image_tag(@user.image.url) if @user.image.present? %>
 </div>
 <div>
   メールアドレス:<%= @user.email %>
 </div>
-<%= link_to "編集", edit_user_path %>
+<div>
+  <%= link_to "ユーザ編集", edit_user_path %>
+</div>
+<div>
+  <%= link_to "ユーザ削除", user_path, method: :delete %>
+</div>
