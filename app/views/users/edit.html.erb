@@ -13,6 +13,11 @@
     <%= f.password_field :password_confirmation, placeholder: "パスワード確認" %>
   </div>
   <div>
+    <p><%= f.label :現在のプロフィール画像 %></p>
+    <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+  </div>
+  <div>
+    <p><%= f.label :新しいプロフィール画像 %></p>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
