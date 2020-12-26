@@ -1,0 +1,27 @@
+<h1>作成</h1>
+<%= form_with(model: @blog, local: true, url: confirm_blogs_path) do |f| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @blog.errors.full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ul>
+      </div>
+  <% end %>
+  <div>
+    <%= f.text_field :title, placeholder: "タイトル" %>
+  </div>
+  <div>
+    <%= f.text_field :content, placeholder: "投稿する内容" %>
+  </div>
+  <div>
+      <%= f.label :'投稿する画像' %>
+      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+  </div>
+  <%= f.submit "投稿" %>
+<% end %>
+<%= link_to "投稿一覧", blogs_path %>

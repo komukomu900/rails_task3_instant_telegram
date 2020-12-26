@@ -1,4 +1,9 @@
 <h1>詳細</h1>
+<% if flash[:notice] %>
+  <div>
+    <p><%= flash[:notice] %><p>
+  </div>
+<% end %>
 <p><%= @user.name %>のページ</p>
 <div>
   プロフィール画像:<%= image_tag(@user.image.url) if @user.image.present? %>
@@ -6,9 +11,11 @@
 <div>
   メールアドレス:<%= @user.email %>
 </div>
+<% if @user.id == current_user.id %>
 <div>
   <%= link_to "ユーザ編集", edit_user_path %>
 </div>
 <div>
   <%= link_to "ユーザ削除", user_path, method: :delete %>
 </div>
+<% end %>

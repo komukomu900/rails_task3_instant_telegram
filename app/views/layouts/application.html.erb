@@ -15,10 +15,10 @@
     <% end %>
     <% if logged_in? %>
       <div>
-        ログイン中ユーザ:<%= @user.name %>
+        ログイン中ユーザ:<%= current_user.name %>
       </div>
       <div>
-        <%= image_tag @user.image.url(:thumb) if @user.image.present? %>
+        <%= image_tag current_user.image.url(:thumb) if current_user.image.present? %>
       </div>
       <%= link_to "ユーザ詳細", user_path(current_user.id) %>
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete  %>  

@@ -1,0 +1,6 @@
+<h1>詳細</h1>
+  <p>タイトル:<%= @blog.title %></p>
+  <p>投稿内容：<%= @blog.content %></p>
+  <p>投稿者：<%= @blog.user.name %></p>
+  <p>画像：<%= image_tag @blog.image.url %></p>
+<%= link_to '一覧', blogs_path %>

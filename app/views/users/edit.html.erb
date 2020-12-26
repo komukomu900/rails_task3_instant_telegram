@@ -1,4 +1,18 @@
 <h1>ユーザ編集</h1>
+<% if flash[:notice] %>
+  <div>
+    <p><%= flash[:notice] %><p>
+  </div>
+<% end %>
+<% if @user.errors.any? %>
+  <div id="error_explanation" >
+    <ul>
+      <% @user.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_with(model: @user, local: true) do |f| %>
   <div>
     <%= f.text_field :name, placeholder: "名前" %>
