@@ -1,9 +1,4 @@
 <h1>ユーザ編集</h1>
-<% if flash[:notice] %>
-  <div>
-    <p><%= flash[:notice] %><p>
-  </div>
-<% end %>
 <% if @user.errors.any? %>
   <div id="error_explanation" >
     <ul>

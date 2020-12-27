@@ -1,9 +1,4 @@
 <h1>一覧</h1>
-<% if flash[:notice] %>
-  <div>
-    <p><%= flash[:notice] %><p>
-  </div>
-<% end %>
 <div><%= link_to '新規作成', new_blog_path, class: 'btn btn-default' %></div>
 <% @blogs.each do |blog| %>
   <ul class="index col-md-4 col-xs-12">

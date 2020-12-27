@@ -15,9 +15,6 @@
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
       <% if logged_in? %>
-
-      <% end %>
-      <% if logged_in? %>
         <div>
           <p><%= current_user.name %></p>
           <p><%= image_tag current_user.image.url(:thumb) if current_user.image.present? %></p>

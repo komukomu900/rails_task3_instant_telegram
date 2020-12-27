@@ -1,9 +1,4 @@
 <h1>詳細</h1>
-<% if flash[:notice] %>
-  <div class="alert alert-warning">
-    <p><%= flash[:notice] %><p>
-  </div>
-<% end %>
 <p><%= @user.name %>のページ</p>
 <div>
   プロフィール画像:<%= image_tag(@user.image.url) if @user.image.present? %>
