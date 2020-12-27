@@ -4,28 +4,38 @@
     <title>Instagramclone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
+    <header>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <% if logged_in? %>
+
+      <% end %>
+      <% if logged_in? %>
+        <div>
+          <p><%= current_user.name %></p>
+          <p><%= image_tag current_user.image.url(:thumb) if current_user.image.present? %></p>
+        </div>
+        <span><%= link_to "マイページ", user_path(current_user.id) %></span>
+        <span><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></span>
+      <% else %>
+        <span><%= link_to "ユーザ登録", new_user_path %></span>
+        <span><%= link_to "ログイン", new_session_path %></span>
+      <% end %>
+    </header>
+    <span class=postsposition>
+      <%= yield %>
+    </span>
+    <footer>
       <div>
-        ログイン中ユーザ:<%= current_user.name %>
+        インスタパクリ Inc.
       </div>
-      <div>
-        <%= image_tag current_user.image.url(:thumb) if current_user.image.present? %>
-      </div>
-      <%= link_to "ユーザ詳細", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete  %>  
-    <% else %>
-      <%= link_to "ユーザ登録", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
-    <% end %>
-    <%= yield %>
+    </footer>
   </body>
 </html>

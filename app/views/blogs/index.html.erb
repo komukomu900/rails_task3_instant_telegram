@@ -4,9 +4,9 @@
     <p><%= flash[:notice] %><p>
   </div>
 <% end %>
-<div><%= link_to '新規作成', new_blog_path %></div>
+<div><%= link_to '新規作成', new_blog_path, class: 'btn btn-default' %></div>
 <% @blogs.each do |blog| %>
-  <ul class="index">
+  <ul class="index col-md-4 col-xs-12">
     <div>
       <li>タイトル:<%= blog.title %></li>
     </div>
