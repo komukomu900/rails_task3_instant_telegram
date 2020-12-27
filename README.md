@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+.envファイルを作成してください。
+その「.env」ファイル内でMAILADDRESSを作成してください。
+この変数の中にはメール送信をするメールアドレスを登録してください。
