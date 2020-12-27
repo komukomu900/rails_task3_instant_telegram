@@ -25,3 +25,7 @@ Things you may want to cover:
 .envファイルを作成してください。
 その「.env」ファイル内でMAILADDRESSを作成してください。
 この変数の中にはメール送信をするメールアドレスを登録してください。
+
+クレジットカードを所持していないため、実際にメールは送られません。
+letter_opener_web を使用して確認してください。
+URLは /inbox です。
