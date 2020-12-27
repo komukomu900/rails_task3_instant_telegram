@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def new
@@ -17,6 +18,7 @@ class BlogsController < ApplicationController
     if params[:back]
       render :new
     elsif @blog.save
+      CreateMailer.create_mail(@blog).deliver
       redirect_to blogs_path
     else
       render :new
@@ -52,7 +54,7 @@ class BlogsController < ApplicationController
   end
 
   def check_current_user
-    user = User.find(params[:id])
+    user = User.find(current_user.id)
     if user.id != current_user.id
       redirect_to blogs_path, notice: "この操作はできません"
     end

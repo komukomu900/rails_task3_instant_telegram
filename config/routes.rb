@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  resources :favorites, only: [:create, :destroy]
+  mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
 end
