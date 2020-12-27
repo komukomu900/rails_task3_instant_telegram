@@ -1,0 +1,19 @@
+<h1><%= current_user.name %>の投稿一覧</h1>
+<% @blogs.each do |blog| %>
+  <ul class="index">
+    <div>
+      <li>タイトル:<%= blog.title %></li>
+    </div>
+    <div>
+      <li>投稿内容:<%= blog.content %></li>
+    </div>
+    <div>
+      <li>投稿画像:<p><%= image_tag blog.image.url %></p></li>
+    </div>
+  </ul>
+<% end %>
+<% if @user.id == current_user.id %>
+  <div>
+    <%= link_to 'みんなの投稿一覧', blogs_path %>
+  </div>
+<% end %>

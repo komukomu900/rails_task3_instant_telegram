@@ -1,0 +1,19 @@
+<h1><%= current_user.name %>の投稿お気に入り一覧</h1>
+<% @favorite_list.each do |f| %>
+  <ul class="index">
+    <div>
+      <li>タイトル:<%= f.title %></li>
+    </div>
+    <div>
+      <li>投稿内容:<%= f.content %></li>
+    </div>
+    <div>
+      <li>投稿画像:<p><%= image_tag f.image.url %></p></li>
+    </div>
+  </ul>
+<% end %>
+<% if @user.id == current_user.id %>
+  <div>
+    <%= link_to 'みんなの投稿一覧', blogs_path %>
+  </div>
+<% end %>

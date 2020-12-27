@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy, :show]
+  before_action :set_user, only: [:edit, :update, :destroy, :show, :favorite, :post_index]
   before_action :check_current_user, only: [:update, :destroy]
 
   def new
@@ -27,6 +27,16 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def post_index
+    @blogs = @user.blogs
+  end
+
+  def favorite
+    @blog = @user.blogs
+    favorite = Favorite.where(user_id: current_user.id).pluck(:blog_id)
+    @favorite_list = Blog.find(favorite)
   end
 
   def destroy

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    member do
+      get :favorite
+      get :post_index
+    end
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :blogs do

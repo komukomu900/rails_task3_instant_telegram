@@ -12,10 +12,19 @@
   メールアドレス:<%= @user.email %>
 </div>
 <% if @user.id == current_user.id %>
-<div>
-  <%= link_to "ユーザ編集", edit_user_path %>
-</div>
-<div>
-  <%= link_to "ユーザ削除", user_path, method: :delete %>
-</div>
+  <div>
+    <%= link_to '自分の投稿一覧', post_index_user_path %>
+  </div>
+  <div>
+    <%= link_to 'みんなの投稿一覧', blogs_path %>
+  </div>
+  <div>
+    <%= link_to "お気に入り一覧", favorite_user_path %>
+  </div>
+  <div>
+    <%= link_to "ユーザ編集", edit_user_path %>
+  </div>
+  <div>
+    <%= link_to "ユーザ削除", user_path, method: :delete %>
+  </div>
 <% end %>
