@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
+  before_action :check_current_user, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:edit, :update, :destroy, :show, :favorite, :post_index]
-  before_action :check_current_user, only: [:update, :destroy]
 
   def new
     @user = User.new
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   def check_current_user
     user = User.find(params[:id])
-    if user.id != params[:id].to_i
+    if user.id != session[:user_id]
       redirect_to new_user_path, notice: "この操作はできません"
     end
   end
